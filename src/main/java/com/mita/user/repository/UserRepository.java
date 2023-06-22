@@ -1,8 +1,11 @@
 package com.mita.user.repository;
 
-import com.mita.user.model.userprofile.UserProfile;
+import com.mita.user.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserProfileRepository extends MongoRepository<UserProfile, String> {
+@Repository
+public interface UserRepository extends MongoRepository<User, String> {
     // Add custom query methods or define additional queries if needed
 }
+
