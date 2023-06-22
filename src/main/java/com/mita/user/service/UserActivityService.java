@@ -13,3 +13,4 @@ public interface UserActivityService {
     UserActivity updateUserActivity(String id, UserActivity userActivity);
     boolean deleteUserActivity(String id);
 }
+
