@@ -1,13 +1,21 @@
-package com.meta.springapp.apis.songImo;
+package com.mita.user.model;
 
-import com.meta.springapp.apis.songImo.Market;
-import com.meta.springapp.apis.songImo.Music;
-import com.meta.springapp.apis.songImo.Popularity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class Stats {
     private Popularity popularity;
     private Music music;
     private Market market;
 
+
+    public Stats() {
+
+    }
 }
 
