@@ -1,12 +1,7 @@
-package com.mita.user.model;
-
-import lombok.Getter;
-import lombok.Setter;
+package com.meta.springapp.apis.songImo;
 
 import java.util.Date;
 
-@Getter
-@Setter
 public class Music {
     private int streamers;
     private int shows;

@@ -1,12 +1,10 @@
-package com.mita.user.model;
+package com.meta.springapp.apis.songImo;
 
-import lombok.Getter;
-import lombok.Setter;
+import jdk.nashorn.internal.objects.annotations.Getter;
 
 import java.util.List;
 
-@Getter
-@Setter
+
 public class Artist {
     private String id;
     private String name;

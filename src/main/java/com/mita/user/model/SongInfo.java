@@ -1,12 +1,9 @@
-package com.mita.user.model;
+package com.meta.springapp.apis.songImo;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.meta.springapp.apis.songImo.Price;
 
 import java.util.List;
 
-@Getter
-@Setter
 public class SongInfo {
     private String title;
     private Price price;

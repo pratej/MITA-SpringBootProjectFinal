@@ -1,12 +1,5 @@
-package com.mita.user.model;
+package com.meta.springapp.apis.songImo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@AllArgsConstructor
 public class Source {
     private String name;
     private double percentage;

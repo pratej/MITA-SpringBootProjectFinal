@@ -1,10 +1,5 @@
-package com.mita.user.model;
+package com.meta.springapp.apis.songImo;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class Popularity {
     private int ranking;
 
