@@ -1,7 +1,12 @@
-package com.meta.springapp.apis.songImo;
+package com.mita.user.model;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
+@Getter
+@Setter
 public class Status {
     private String code;
     private Date activeDt;
