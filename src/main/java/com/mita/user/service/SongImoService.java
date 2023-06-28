@@ -1,15 +1,19 @@
 package com.mita.user.service;
 
 import com.mita.user.model.*;
+import lombok.NonNull;
 
-
+@NonNull
 public interface SongImoService {
 
     SongImo getSongImo();
 
     SongImo getSongImoById(String songImoId);
 
-    SongImo addSongImo(SongImo request);
+
+    default SongImo addSongImo(SongImo request){
+        return request;
+    };
 
     SongImo updateSong(String songImoId, SongImo request);
 
