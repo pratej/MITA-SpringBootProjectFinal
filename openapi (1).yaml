@@ -1,0 +1,1428 @@
+openapi: 3.0.3
+info:
+  version: string
+  title: SongImo apis
+  description: |-
+    This is list of all api and operation can be performed on SongImo 
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://swagger.io/api
+paths:
+  /songImo:
+    get:
+      tags:
+        - songImo
+      summary: Get all songImo
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongImo'          
+        '400':
+          description: Invalid songImo
+    post:
+      tags:
+        - songImo
+      summary: Add song in songImo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongImo'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongImo'          
+        '405':
+          description: Invalid input
+  /songImo/{songImoId}:
+    get:
+      tags:
+        - songImo
+      summary: Find songImo with Id
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongImo'          
+        '400':
+          description: Invalid songImoId value
+    delete:
+      tags:
+        - songImo
+      summary: Delete song by Id
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful Deleted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongImoResponse'
+        '400':
+          description: Invalid songImoId value
+    put:
+      tags:
+        - songImo
+      summary: Update song by Id
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing songImo
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongImo'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongImoResponse'
+        '400':
+          description: Invalid songImoId value
+  /songImo/{songImoId}/info:
+    get:
+      tags:
+        - songImo
+      summary: Get info by Id
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Info'          
+        '400':
+          description: Invalid tag value
+  /songImo/{songImoId}/song:
+    get:
+      tags:
+        - songImo
+      summary: Get Song by ID
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Song'          
+        '400':
+          description: Invalid songImoId supplied
+  /songImo/{songImoId}/artist:
+    get:
+      tags:
+        - songImo
+      summary: Get artist details by Id
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+  /songImo/{songImoId}/status:
+    get:
+      tags:
+        - songImo
+      summary: Get songImo status by Id
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/Status'
+  /songImo/{songImoId}/stats:
+    get:
+      tags:
+        - songImo
+      summary: Get stats by songImoId
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stats'
+        '405':
+          description: Invalid input
+  /songImo/{songImoId}/audit:
+    get:
+      tags:
+        - songImo
+      summary: Find Audit info by Id
+      parameters:
+        - name: songImoId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audit'
+        '400':
+          description: Invalid songImoId
+  /songStock:
+    get:
+      tags:
+        - SongStock
+      summary: Get songStock
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongStock'
+        '400':
+          description: Invalid songStockId
+    post:
+      tags:
+        - SongStock
+      summary: Add songStock
+      requestBody:
+        description: Add all details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongStock'
+        required: true
+      responses:
+        '200':
+          description: Successful Posted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongStock'
+        '400':
+          description: Invalid songImoId value
+  /songStock/{songStockId}:
+    delete:
+      tags:
+        - SongStock
+      summary: delete Songstock by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songImoId
+    get:
+      tags:
+        - SongStock
+      summary: Get songStock by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongStock'
+        '400':
+          description: Invalid songStockId
+    put:
+      tags:
+        - SongStock
+      summary: Update songStock by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing songImo
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongStock'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songImoId value
+  /songStock/{songStockId}/info:
+    get:
+      tags:
+        - SongStock
+      summary: Get info by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Info'
+        '400':
+          description: Invalid songStockId
+  /songStock/{songStockId}/song:
+    get:
+      tags:
+        - SongStock
+      summary: Get songs by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Song'
+        '400':
+          description: Invalid songStockId
+    delete:
+      tags:
+        - SongStock
+      summary: delete song by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songImoId
+    put:
+      tags:
+        - SongStock
+      summary: Update song by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing song
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Song'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songImoId value
+  /songStock/{songStockId}/artist:
+    get:
+      tags:
+        - SongStock
+      summary: Get artist by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+        '400':
+          description: Invalid songStockId
+    delete:
+      tags:
+        - SongStock
+      summary: delete artist by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songStockId
+    put:
+      tags:
+        - SongStock
+      summary: Update artist by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing artist
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Artist'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songStockId value
+  /songStock/{songStockId}/stats:
+    get:
+      tags:
+        - SongStock
+      summary: get stats by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stats'
+        '400':
+          description: Invalid songStockId
+    put:
+      tags:
+        - SongStock
+      summary: Update stats by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing stats
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stats'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songImoId value
+  /songStock/{songStockId}/audit:
+    get:
+      tags:
+        - SongStock
+      summary: Find Audit info by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audit'
+        '400':
+          description: Invalid songstock
+  /songStock/{songStockId}/tag:
+    get:
+      tags:
+        - SongStock
+      summary: Get tags by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tags'
+        '400':
+          description: Invalid songImoId
+    put:
+      tags:
+        - SongStock
+      summary: Update tag by Id
+      parameters:
+        - name: songStockId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing tag
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tags'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songImoId value
+  /Songs:
+    get:
+      tags:
+        - Songs
+      summary: get songs
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Audit'
+        '400':
+          description: Invalid songId
+    post:
+      tags:
+        - Songs
+      summary: Add songs
+      requestBody:
+        description: update existing Songs
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Song'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongsResponse'
+        '400':
+          description: Invalid songImoId value
+  /Songs/{songId}:
+    delete:
+      tags:
+        - Songs
+      summary: Find song info by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Song'
+        '400':
+          description: Invalid songId
+    get:
+      tags:
+        - Songs
+      summary: Find song info by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Song'
+        '400':
+          description: Invalid songId
+    put:
+      tags:
+        - Songs
+      summary: Update song by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing song
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Song'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongsResponse'
+        '400':
+          description: Invalid songImoId value
+  /Songs/{songId}/info:
+    get:
+      tags:
+        - SongStock
+      summary: Find song info by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Info'
+        '400':
+          description: Invalid songImoId
+  /Songs/{songId}/artist:
+    get:
+      tags:
+        - Songs
+      summary: Find artist info by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+        '400':
+          description: Invalid songId
+    delete:
+      tags:
+        - Songs
+      summary: Find Audit info by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SongStockResponse'
+        '400':
+          description: Invalid songId
+    put:
+      tags:
+        - Songs
+      summary: Update song by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing song
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Artist'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongsResponse'
+        '400':
+          description: Invalid songImoId value
+  /Song/{songId}/stats:
+    get:
+      tags:
+        - Songs
+      summary: Find Audit info by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stats'
+        '400':
+          description: Invalid songId
+    put:
+      tags:
+        - Songs
+      summary: Update song by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing stats
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stats'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongsResponse'
+        '400':
+          description: Invalid songImoId value
+  /Songs/{songId}/tag:
+    get:
+      tags:
+        - Songs
+      summary: Find tag by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tags'
+        '400':
+          description: Invalid songImoId
+    put:
+      tags:
+        - Songs
+      summary: Update tag by Id
+      parameters:
+        - name: songId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing tag
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SongImo'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongsResponse'
+        '400':
+          description: Invalid songId value
+  /Artist:
+    get:
+      tags:
+        - Artist
+      summary: get artists
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+        '400':
+          description: Invalid artistId
+    post:
+      tags:
+        - Artist
+      summary: Add artist
+      requestBody:
+        description: add artist details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Artist'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SongsResponse'
+        '400':
+          description: Invalid artistId value
+  /Artist/{artistId}:
+    delete:
+      tags:
+        - Artist
+      summary: delete artist by Id
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Invalid artistId
+    get:
+      tags:
+        - Artist
+      summary: Find artist info by Id
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+        '400':
+          description: Invalid artistId
+    put:
+      tags:
+        - Artist
+      summary: Update artist by Id
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing artist
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Artist'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Response'
+        '400':
+          description: Invalid artist value
+  /Artist/{artistId}/song:
+    get:
+      tags:
+        - Artist
+      summary: Get songs by artistId
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Song'
+        '400':
+          description: Invalid artistId
+    post:
+      tags:
+        - Artist
+      summary: Add artist details
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Artist'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Artist'
+        '400':
+          description: Invalid artistId value
+  /Artist/{artistId}/genre:
+    get:
+      tags:
+        - Artist
+      summary: Find genre by Id
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+        '400':
+          description: Invalid artistId
+    put:
+      tags:
+        - Artist
+      summary: Update artist by Id
+      parameters:
+        - name: artistId
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: string
+            default: available
+      requestBody:
+        description: update existing genre
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Genre'
+        required: true
+      responses:
+        '200':
+          description: successful Updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Response'
+        '400':
+          description: Invalid artistId value
+components:
+  schemas:
+    SongImo:
+      type: object
+      properties:
+        songImoId:
+          type: string
+        info:
+          $ref: '#/components/schemas/Info'
+        song:
+          $ref: '#/components/schemas/Song'
+        artist:
+          $ref: '#/components/schemas/Artist'
+        status:
+          $ref: '#/components/schemas/Status'
+        stats:
+          $ref: '#/components/schemas/Stats'
+        audit:
+          $ref: '#/components/schemas/Audit'
+        tags:
+         type: array
+         items:
+          type: string
+    SongStock:
+      type: object
+      properties:
+        songStockId:
+         type: string
+        info:
+         $ref: '#/components/schemas/Info'
+        song:
+         $ref: '#/components/schemas/Song'
+        artist:
+         $ref: '#/components/schemas/Artist'
+        stats:
+         $ref: '#/components/schemas/Stats'
+        audit:
+         $ref: '#/components/schemas/Audit'
+        tags:
+         type: array
+         items:
+          type: string
+    Info:
+      type: object
+      properties:
+        title:
+          type: string
+        price:
+          type: string
+        about:
+          type: string
+        audio:
+          type: array
+          items:
+            type: string
+        image:
+          type: array
+          items:
+            type: string
+    Song:
+     type: object
+     properties:
+      id:
+       type: string
+      title:
+       type: string
+      Composers:
+       type: string
+      Genre:
+       type: string
+      featuredArtists:
+       type: string
+      description:
+       type: string
+      audio:
+       type: array
+       items:
+        type: string
+      album:
+       type: string
+      image:
+       type: array
+       items:
+        type: string
+      language:
+       type: string
+      releaseDate:
+       type: string
+       format: date
+    Artist:
+      type: object
+      properties:
+        id:
+          type: string
+          format: int64
+        humanName:
+          $ref: '#/components/schemas/HumanName'
+        description:
+         type: string
+        image:
+          type: array
+          items:
+            type: string
+        songs:
+         type: array
+         items:
+          type: string
+        genres:
+         type: array
+         items:
+          type: string
+        followersCount:
+         type: integer
+        socialMediaLinks:
+         type: object
+         additionalProperties:
+          type: string
+        albums:
+         type: array
+         items:
+          type: string
+        events:
+         type: array
+         items:
+          type: string
+    Tags:
+     type: object
+     properties:
+      id:
+       type: string
+      name:
+       type: string
+      description:
+       type: string
+    Status:
+      type: object
+      properties:
+        code:
+          type: string
+        activateDt:
+          type: string
+          format: date-time
+        closeDt:
+          type: string
+          format: date-time
+        percentageComplete:
+          type: integer
+    Stats:
+      type: object
+      properties:
+        popularity:
+         $ref: '#/components/schemas/Popularity'
+        music:
+          $ref: '#/components/schemas/Music'
+        market:
+          $ref: '#/components/schemas/Market'
+    Audit:
+      type: object
+      properties:
+        updatedBy:
+         type: string
+        updatedDt:
+          type: string
+          format: date-time
+    Popularity:
+      type: object
+      properties:
+       ranking:
+        type: integer
+    Music:
+      type: object
+      properties:
+       streamers:
+        type: integer
+       shows:
+        type: integer
+       royalties:
+        type: number
+       payDay:
+        type: string
+        format: date-time
+    Market:
+     type: object
+     properties:
+      yield:
+       type: number
+      multiple:
+       type: number
+      marketCap:
+       type: number
+      volume:
+       type: number
+    HumanName:
+     type: object
+     properties:
+      use:
+        type: string
+        enum: [usual, official, temp, nickname, anonymous, old, maiden]
+      fullName:
+        type: string
+      family:
+        type: string
+      given:
+        type: string
+      prefix:
+        type: string
+      suffix:
+        type: string
+      startTime:
+        type: integer
+        format: int64
+      endTime:
+        type: integer
+        format: int64
+    Genre:
+     type: object
+     properties:
+      genreId:
+       type: string
+      name:
+       type: string
+      artists:
+       type: array
+       items:
+        $ref: '#/components/schemas/Artist'
+    SongImoResponse:
+      type: object
+      properties:
+        songImoId:
+          type: string
+        message:
+          type: string
+    SongStockResponse:
+      type: object
+      properties:
+        songStockId:
+          type: string
+        message:
+          type: string
+    SongsResponse:
+      type: object
+      properties:
+        songStockId:
+          type: string
+        message:
+          type: string
+    Response:
+      type: object
+      properties:
+        artistId:
+          type: string
+        message:
+          type: string
