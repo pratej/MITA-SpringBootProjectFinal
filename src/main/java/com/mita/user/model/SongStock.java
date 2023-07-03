@@ -12,6 +12,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 public class SongStock {
+
     private String songStockId;
     private SongInfo info;
     private Price price;

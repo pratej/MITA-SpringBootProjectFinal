@@ -15,13 +15,11 @@ import java.io.IOException;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/songImo")
-@CrossOrigin(origins = "")
+@CrossOrigin(origins = "localhost/8080")
 public class SongImoController {
 
     @Autowired
     private SongImoService songImoService;
-
-    private SongImoServiceImpl songImoServiceImpl;
 
 
     /**
